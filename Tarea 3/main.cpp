@@ -37,11 +37,11 @@ double calculateC(double i, double j, double h_x, double h_y, int firstIndex){
 }
 
 void print_2DArray(double *array, int n, int m) {
-  for (int i = 0; i < n; i++) {
-      for (int j = 0; j < m; j++) {
-        cout << *((array+i*n) + j) << " ";; 
-      }
-      cout << endl;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            cout << *((array+i*n) + j) << " ";
+        }
+        cout << endl;
   }
 }
 
@@ -140,7 +140,7 @@ int main(){
         }
     }
 
-    cout << "Name:" << processor_name << " Rank:" << world_rank << " matriz central: " << endl;
+    cout << "Name:" << processor_name << " Rank:" << world_rank << " Array C: " << endl;
     print_2DArray((double *)localC, n_x, localRowSize);
 
     MPI_Finalize();
