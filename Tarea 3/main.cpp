@@ -135,7 +135,7 @@ int main(){
         }
     }
 
-    print_matrix((double *)localC, n_x, localRowSize);
+    print_2DArray((double *)localC, n_x, localRowSize);
 
     MPI_Finalize();
 }
