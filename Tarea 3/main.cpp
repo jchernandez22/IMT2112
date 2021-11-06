@@ -57,8 +57,8 @@ int main(){
     int n_y = 7;
     
     // Usamos pasos equidistantes
-    double h_x = (double)(1/(n_x-1));
-    double h_y = (double)(1/(n_y-1));
+    double h_x = (double)1/(n_x-1);
+    double h_y = (double)1/(n_y-1);
 
     // Ahora definimos el número de filas x procesador
     // El dominio se divide horizontalmente así que usamos n_y
