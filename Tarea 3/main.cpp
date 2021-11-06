@@ -36,7 +36,7 @@ double calculateC(double i, double j, double h_x, double h_y, int firstIndex){
     return -calculateW(i,j,h_x,h_y,firstIndex) - calculateE(i,j,h_x,h_y,firstIndex) - calculateS(i,j,h_x,h_y,firstIndex) - calculateN(i,j,h_x,h_y,firstIndex) + 1;
 }
 
-void print_matrix(double* matrix, int n, int m) {
+void print_2DArray(double *matrix, int n, int m) {
   printf("\n");
   for (int i = 0; i < n; i++) {
       for (int j = 0; j < m; j++) {
@@ -135,7 +135,7 @@ int main(){
         }
     }
 
-    print_matrix(localC, n_x, localRowSize);
+    print_matrix((double *)localC, n_x, localRowSize);
 
     MPI_Finalize();
 }
