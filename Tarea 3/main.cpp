@@ -47,6 +47,7 @@ void print_2DArray(double *array, int n, int m) {
 }
 
 int main(){
+    MPI_Init(NULL,NULL);
     // Obtenemos el nro de procesadores y rank del proceso
 	int world_size, world_rank;
 	MPI_Comm_size(MPI_COMM_WORLD, &world_size);
