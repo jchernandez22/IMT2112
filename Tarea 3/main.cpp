@@ -52,6 +52,11 @@ int main(){
 	MPI_Comm_size(MPI_COMM_WORLD, &world_size);
 	MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
 
+    // Obtenemos el nombre del procesador y el largo del nombre
+    char processor_name[MPI_MAX_PROCESSOR_NAME];
+    int name_len;
+    MPI_Get_processor_name(processor_name, &name_len);
+
     // Definimos los valores n_x n_y h_x y h_x
     int n_x = 10;
     int n_y = 7;
@@ -135,6 +140,7 @@ int main(){
         }
     }
 
+    cout << "Name:" << processor_name << " Rank:" << world_rank << " matriz central: " << endl;
     print_2DArray((double *)localC, n_x, localRowSize);
 
     MPI_Finalize();
