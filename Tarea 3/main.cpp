@@ -75,46 +75,62 @@ int main(){
     // a C_ij E_ij W_ij N_ij y S_ij
     
     // Creamos el array 2D: C
-    double localC[n_x][localRowSize] = {0}; // Creamos un array de 0's
+    double localC[n_x][localRowSize];
 
-    for(int i=1; i<n_x-1; i++){
-        for(int j=1; j<localRowSize-1; j++){
+    for(int i=0; i<n_x; i++){
+        for(int j=0; j<localRowSize; j++){
+            // Calculamos el valor expresado en el stencil
             localC[i][j] = calculateC(i, j, h_x, h_y, firstIndex);
+
+            // Si nos paramos en los bordes de los lados:
+            if(i==0 || i==n_x-1){
+                localC[i][j]=0;
+            }
+
+            // Si somos el primer proceso y estamos en la primera fila:
+            if(world_rank==0 && j==0){
+                localC[i][j]=0;
+            }
+
+            // Si somos el último proceso y estamos en la última fila:
+            if(world_rank==world_size-1 && j==localRowSize-1){
+                localC[i][j]=0;
+            }
         }
     }
 
     // Creamos el array 2D: N
-    double localN[n_x][localRowSize] = {0}; // Creamos un array de 0's
+    double localN[n_x][localRowSize];
 
-    for(int i=1; i<n_x-1; i++){
-        for(int j=1; j<localRowSize-1; j++){
+    for(int i=0; i<n_x; i++){
+        for(int j=0; j<localRowSize; j++){
             localN[i][j] = calculateN(i, j, h_x, h_y, firstIndex);
         }
     }
 
     // Creamos el array 2D: S
-    double localS[n_x][localRowSize] = {0}; // Creamos un array de 0's
+    double localS[n_x][localRowSize];
 
-    for(int i=1; i<n_x-1; i++){
-        for(int j=1; j<localRowSize-1; j++){
+    for(int i=0; i<n_x; i++){
+        for(int j=0; j<localRowSize; j++){
             localS[i][j] = calculateS(i, j, h_x, h_y, firstIndex);
         }
     }
 
     // Creamos el array 2D: E
-    double localE[n_x][localRowSize] = {0}; // Creamos un array de 0's
+    double localE[n_x][localRowSize];
 
-    for(int i=1; i<n_x-1; i++){
-        for(int j=1; j<localRowSize-1; j++){
+    for(int i=0; i<n_x; i++){
+        for(int j=0; j<localRowSize; j++){
             localE[i][j] = calculateE(i, j, h_x, h_y, firstIndex);
         }
     }
 
     // Creamos el array 2D: W
-    double localW[n_x][localRowSize] = {0}; // Creamos un array de 0's
+    double localW[n_x][localRowSize]; 
 
-    for(int i=1; i<n_x-1; i++){
-        for(int j=1; j<localRowSize-1; j++){
+    for(int i=0; i<n_x; i++){
+        for(int j=0; j<localRowSize; j++){
             localW[i][j] = calculateW(i, j, h_x, h_y, firstIndex);
         }
     }
