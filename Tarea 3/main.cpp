@@ -37,12 +37,11 @@ double calculateC(double i, double j, double h_x, double h_y, int firstIndex){
 }
 
 void print_2DArray(double *array, int n, int m) {
-  printf("\n");
   for (int i = 0; i < n; i++) {
       for (int j = 0; j < m; j++) {
         cout << *((array+i*n) + j) << " ";; 
       }
-    printf("\n");
+      cout << endl;
   }
 }
 
