@@ -58,8 +58,8 @@ int main(){
     MPI_Get_processor_name(processor_name, &name_len);
 
     // Definimos los valores n_x n_y h_x y h_x
-    int n_x = 10;
-    int n_y = 7;
+    int n_x = 100;
+    int n_y = 70;
     
     // Usamos pasos equidistantes
     double h_x = (double)1/(n_x-1);
